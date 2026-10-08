@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="id">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MIRAI GAKUIN · LPK Bahasa &amp; Keterampilan Jepang</title>
+<meta name="description" content="Lembaga pelatihan bahasa dan keterampilan kerja Jepang. Kelas kecil, pengajar bersertifikat, pendampingan sampai penempatan kerja.">
+<meta name="theme-color" content="#121214">
+<meta property="og:title" content="MIRAI GAKUIN · LPK Bahasa &amp; Keterampilan Jepang">
+<meta property="og:description" content="Jalur terstruktur menuju karier di Jepang. Bahasa, keterampilan, dan kesiapan kerja sejak hari pertama.">
+<meta property="og:type" content="website">
+
+<!-- ============ FONT LOKAL ============ -->
+<link rel="stylesheet" href="fonts/fonts-v2.css">
+
+
+
+<style>
+/* ============================================================
+   MIRAI GAKUIN - Japanese editorial, mengacu pada pola
+   geosphere2026 (narrative scroll + sticky), kamdalej (reveal
+   berurutan + kartu orang), white-desert (parallax + horizontal
+   scroll + gambar pembuka).
+   ============================================================ */
+
+:root{
+  --washi:#F9F8F5;
+  --washi-2:#F2EFE9;
+  --washi-3:#EAE6DE;
+  --ink:#121214;
+  --ink-soft:#1C1C1F;
+  --sumi:#0C0C0E;
+  --vermilion:#C82A2A;
+  --vermilion-deep:#9E1F1F;
+  --brass:#C5A059;
+  --brass-ink:#8A6A22;
+  --brass-light:#E0C084;
+  --hair:rgba(18,18,20,.13);
+  --hair-dark:rgba(249,248,245,.16);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+  --ease-quint:cubic-bezier(.5,1,.89,1);
+  --ease-inout:cubic-bezier(.76,0,.24,1);
+  --ease-std:cubic-bezier(.4,0,.2,1);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; font-size:100%}
+body{
+  margin:0;
+  background:var(--washi);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  line-height:1.72;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--vermilion); color:#fff}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+:focus-visible{outline:3px solid var(--vermilion); outline-offset:3px; border-radius:2px}
+:focus-visible:not(:focus-visible){outline:none}
+a,button,[role="button"],summary,label[for]{cursor:pointer}
+#burger:focus-visible,#mclose:focus-visible{outline-color:var(--washi)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:300;background:var(--ink);color:var(--washi);padding:.8rem 1.2rem;border-radius:0 0 6px 0;font-size:14px}
+.skip-link:focus{left:0}
+
+/* ---------- tipografi peran ---------- */
+.display{font-family:Marcellus,'Zen Old Mincho',serif; font-weight:300; letter-spacing:-.021em; line-height:.98}
+.display-strong{font-family:Marcellus,'Zen Old Mincho',serif; font-weight:600; letter-spacing:-.021em; line-height:1.02}
+.marc{font-family:Marcellus,'Zen Old Mincho',serif; letter-spacing:-.005em; font-weight:400}
+.eyebrow{font-family:Marcellus,'Zen Old Mincho',serif; text-transform:none; letter-spacing:.04em; font-size:13px; font-weight:400; color:var(--ink)}
+/* kicker di bawah heading (heading selalu jadi elemen pertama section) */
+.eyebrow-after{
+  display:flex; align-items:center; gap:.85rem;
+  font-family:Marcellus,'Zen Old Mincho',serif;
+  font-size:13.5px; letter-spacing:.01em; line-height:1.5;
+  margin:1rem 0 0; color:var(--ink)
+}
+.eyebrow-after::before{
+  content:""; flex:0 0 auto; width:2.6rem; height:1px;
+  background:currentColor; opacity:.5
+}
+.eyebrow-after.eb-vermilion{color:var(--vermilion)}
+.eyebrow-after.eb-brass{color:var(--brass-ink)}
+.eyebrow-after.eb-brass-on-dark{color:var(--brass-light)}
+.eyebrow-after.eb-ink{color:var(--ink)}
+.eyebrow-after.eb-washi{color:var(--washi)}
+@media (max-width:639px){.eyebrow-after{font-size:13px; margin-top:.85rem}}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums}
+.kanji{font-family:'Zen Old Mincho',Marcellus,serif; font-feature-settings:"palt" 1}
+.label{font-family:'IBM Plex Sans',system-ui,sans-serif; text-transform:none; letter-spacing:.01em; font-weight:500; font-size:13px; line-height:1.5}
+.quote-serif{font-family:'Cormorant Garamond','Zen Old Mincho',serif; font-style:italic; font-weight:300; letter-spacing:-.01em; line-height:1.24}
+.va-text{writing-mode:vertical-rl; text-orientation:mixed; letter-spacing:.26em}
+
+/* ---------- garis rambut (shoji) ---------- */
+.hair{border-color:var(--hair)}
+.hair-t{border-top:1px solid var(--hair)}
+.hair-b{border-bottom:1px solid var(--hair)}
+.hair-dark{border-color:var(--hair-dark)}
+
+/* ---------- tombol ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.7rem;
+  border-radius:9999px; padding:1.02rem 2rem;
+  font-family:'IBM Plex Sans',system-ui,sans-serif; text-transform:none; letter-spacing:.005em;
+  font-size:14px; font-weight:600; cursor:pointer; border:0;
+  transition:background-color .45s var(--ease-std), color .45s var(--ease-std),
+             border-color .45s var(--ease-std), transform .7s var(--ease-expo);
+  will-change:transform;
+}
+.btn-primary{background:var(--vermilion); color:#fff}
+.btn-primary:hover{background:var(--vermilion-deep)}
+.btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--hair)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-ghost-dark{background:transparent; color:var(--washi); border:1px solid var(--hair-dark)}
+.btn-ghost-dark:hover{border-color:var(--washi)}
+.btn-light{background:var(--washi); color:var(--ink)}
+.btn-light:hover{background:#fff}
+.btn .arw{transition:transform .6s var(--ease-expo)}
+.btn:hover .arw{transform:translateX(5px)}
+
+/* ---------- tautan bergaris bawah (wipe) ---------- */
+.link-wipe{position:relative; display:inline-block}
+.link-wipe::after{
+  content:""; position:absolute; left:0; bottom:-5px; height:1px; width:100%;
+  background:currentColor; transform:scaleX(0); transform-origin:left;
+  transition:transform .66s var(--ease-expo);
+}
+.link-wipe:hover::after, .link-wipe.active::after{transform:scaleX(1)}
+
+/* ============================================================
+   ANIMASI MASUK (reveal)
+   ============================================================ */
+[data-reveal]{opacity:0; transform:translate3d(0,var(--rv-y,30px),0);
+  transition:opacity .95s var(--ease-expo), transform 1.15s var(--ease-expo);
+  transition-delay:var(--rv-d,0ms); will-change:opacity,transform}
+[data-reveal].is-in{opacity:1; transform:none}
+
+[data-reveal="wipe"]{opacity:1; transform:none; clip-path:inset(0 0 102% 0);
+  transition:clip-path 1.25s var(--ease-quint); transition-delay:var(--rv-d,0ms)}
+[data-reveal="wipe"].is-in{clip-path:inset(0 0 -2% 0)}
+
+[data-reveal="line"]{opacity:1; transform:none; transform:scaleX(0); transform-origin:left;
+  transition:transform 1.3s var(--ease-quint); transition-delay:var(--rv-d,0ms)}
+[data-reveal="line"].is-in{transform:scaleX(1)}
+
+[data-reveal="zoom"]{opacity:0; transform:scale(1.06);
+  transition:opacity 1.2s var(--ease-expo), transform 1.6s var(--ease-expo);
+  transition-delay:var(--rv-d,0ms); will-change:opacity,transform}
+[data-reveal="zoom"].is-in{opacity:1; transform:scale(1)}
+
+/* pisah per kata, naik dari balik garis */
+[data-split] .wd{display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:.06em}
+[data-split] .wd > i{display:inline-block; font-style:inherit;
+  transform:translate3d(0,112%,0) rotate(2deg);
+  transition:transform 1.1s var(--ease-expo);
+  transition-delay:calc(var(--i) * 52ms)}
+[data-split].is-in .wd > i{transform:none}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.marquee{display:flex; width:max-content; animation:marquee-x var(--mq,38s) linear infinite}
+.marquee:hover,.marquee:focus-within{animation-play-state:paused}
+.marquee[data-paused="true"]{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.marquee{animation:none !important}}
+@keyframes marquee-x{from{transform:translate3d(0,0,0)} to{transform:translate3d(-50%,0,0)}}
+/* tombol jeda marquee (WCAG 2.2.2) */
+.mq-wrap{position:relative}
+#mqToggle{position:absolute; right:clamp(1rem,3vw,2.5rem); top:50%; transform:translateY(-50%);
+  z-index:3; width:44px; height:44px; display:grid; place-items:center; border-radius:9999px;
+  background:rgba(249,248,245,.12); border:1px solid rgba(249,248,245,.28); color:var(--washi);
+  cursor:pointer; transition:background-color .3s var(--ease-std), border-color .3s var(--ease-std)}
+#mqToggle:hover{background:rgba(249,248,245,.22); border-color:rgba(249,248,245,.5)}
+#mqToggle:focus-visible{outline:3px solid var(--washi); outline-offset:3px}
+#mqToggle svg{width:16px; height:16px; fill:currentColor}
+#mqToggle .ic-play{display:none}
+#mqToggle[aria-pressed="true"] .ic-pause{display:none}
+#mqToggle[aria-pressed="true"] .ic-play{display:block}
+@media (max-width:767px){#mqToggle{right:.75rem}}
+.mask-x{
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%);
+}
+
+/* ============================================================
+   TABIR PEMBUKA (mist curtain)
+   ============================================================ */
+#mist{position:fixed; inset:0; z-index:200; pointer-events:none}
+#mist .panel{position:absolute; left:0; width:100%; height:50.5%; background:var(--sumi);
+  transition:transform 1.15s var(--ease-inout); will-change:transform}
+#mist .top{top:0}
+#mist .bot{bottom:0}
+#mist.done .top{transform:translate3d(0,-101%,0)}
+#mist.done .bot{transform:translate3d(0,101%,0)}
+#mist .core{position:absolute; inset:0; z-index:2; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:1.6rem; color:var(--washi);
+  transition:opacity .5s var(--ease-std)}
+#mist.done .core{opacity:0}
+#mist .hairline-v{width:1px; height:70px; background:linear-gradient(180deg,transparent,var(--hair-dark),transparent)}
+
+/* ============================================================
+   NAVIGASI
+   ============================================================ */
+#nav{position:fixed; top:0; left:0; right:0; z-index:100;
+  transition:transform .8s var(--ease-expo), background-color .55s var(--ease-std),
+             border-color .55s var(--ease-std), backdrop-filter .55s var(--ease-std);
+  border-bottom:1px solid transparent}
+#nav.solid{background:rgba(249,248,245,.82); backdrop-filter:blur(16px) saturate(150%);
+  border-bottom-color:var(--hair)}
+#nav.hide{transform:translate3d(0,-104%,0)}
+#prog{position:fixed; top:0; left:0; height:2px; width:100%; background:var(--vermilion); z-index:120;
+  transform:scaleX(0); transform-origin:left; transition:transform .14s linear}
+
+/* menu mobile */
+#mnav{position:fixed; inset:0; z-index:99; visibility:hidden; background:var(--sumi); color:var(--washi);
+  display:flex; flex-direction:column; justify-content:center;
+  clip-path:inset(0 0 100% 0); transition:clip-path 1.05s var(--ease-inout)}
+#mnav.open{clip-path:inset(0 0 0 0); visibility:visible}
+#mnav a.mlink{display:block; overflow:hidden}
+#mnav a.mlink span{display:block; transform:translate3d(0,110%,0);
+  transition:transform .9s var(--ease-expo); transition-delay:calc(var(--i) * 62ms)}
+#mnav.open a.mlink span{transform:none}
+
+/* ============================================================
+   HORIZONTAL SCROLL
+   ============================================================ */
+.hs-shell{position:relative; background:var(--sumi); color:var(--washi)}
+.hs-pin{position:sticky; top:0; height:100vh; overflow:hidden; display:flex; flex-direction:column;
+  justify-content:center}
+.hs-track{display:flex; gap:1.5rem; padding:0 clamp(1.5rem,6vw,7rem); will-change:transform}
+.hs-card{flex:0 0 auto; width:clamp(268px,26vw,392px)}
+@media (max-width:1023px){
+  .hs-pin{position:relative; height:auto; padding:4rem 0}
+  .hs-track{width:100%; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+  .hs-card{scroll-snap-align:center; width:78vw}
+  .hs-progress{display:none}
+}
+
+/* ============================================================
+   AKORDEON
+   ============================================================ */
+.acc-item{border-top:1px solid var(--hair)}
+.acc-btn{width:100%; display:flex; align-items:flex-start; justify-content:space-between; gap:1.5rem;
+  padding:1.7rem 0; background:none; border:0; text-align:left; cursor:pointer; color:inherit}
+.acc-body{display:grid; grid-template-rows:0fr; opacity:0;
+  transition:grid-template-rows .78s var(--ease-expo), opacity .6s var(--ease-std);
+  padding-bottom:0}
+.acc-body > div{overflow:hidden}
+.acc-body > div{overflow:hidden}
+.acc-item.open .acc-body{grid-template-rows:1fr; opacity:1}
+.acc-item.open .acc-body > div{padding-bottom:1.9rem}
+.acc-mark{position:relative; width:15px; height:15px; flex:0 0 auto; margin-top:7px}
+.acc-btn{min-height:44px}
+.acc-mark::before,.acc-mark::after{content:""; position:absolute; background:var(--vermilion);
+  transition:transform .7s var(--ease-expo)}
+.acc-mark::before{left:0; top:7px; width:15px; height:1.5px}
+.acc-mark::after{left:7px; top:0; width:1.5px; height:15px}
+.acc-item.open .acc-mark::after{transform:scaleY(0)}
+
+/* ============================================================
+   LAIN-LAIN
+   ============================================================ */
+#flyout{position:fixed; right:clamp(1rem,2.4vw,2rem); bottom:clamp(1rem,2.4vw,2rem); z-index:110;
+  opacity:0; transform:translate3d(0,22px,0) scale(.96); pointer-events:none;
+  transition:opacity .7s var(--ease-expo), transform .8s var(--ease-expo)}
+#flyout.is-in{opacity:1; transform:none; pointer-events:auto}
+
+.grain::after{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.055'/></svg>");
+}
+
+.ph{position:relative; overflow:hidden; background:var(--ink-soft)}
+.ph .wash{position:absolute; inset:0;
+  background:
+   radial-gradient(120% 90% at 12% 8%, rgba(200,42,42,.22) 0%, transparent 58%),
+   radial-gradient(90% 80% at 88% 96%, rgba(197,160,89,.16) 0%, transparent 60%),
+   linear-gradient(158deg,#141518 0%,#0A0B0D 58%,#14100F 100%)}
+.ph .veil{position:absolute; inset:0; background:
+  repeating-linear-gradient(90deg,rgba(249,248,245,.05) 0 1px,transparent 1px 44px)}
+.ph .mark{position:absolute; inset:0; display:grid; place-items:center}
+.shine{position:absolute; top:0; left:-40%; width:38%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(249,248,245,.10),transparent);
+  transition:transform 1.5s var(--ease-expo)}
+.group:hover .shine{transform:translate3d(320%,0,0)}
+
+.rot-90{transform:rotate(90deg)}
+.hanko{display:grid; place-items:center; width:34px; height:34px; background:var(--vermilion);
+  color:#fff; border-radius:3px; font-family:'Zen Old Mincho',Marcellus,serif; font-size:15px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+
+.parallax-layer{will-change:transform}
+.reveal-img{clip-path:inset(0 0 100% 0); transition:clip-path 1.5s var(--ease-quint)}
+.reveal-img.is-in{clip-path:inset(0 0 0 0)}
+
+.num-lg{font-family:'IBM Plex Sans',system-ui,sans-serif; font-weight:600; letter-spacing:-.02em; line-height:1;
+  font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion: reduce){
+  .parallax-layer{transform:none !important}
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important}
+  [data-reveal],[data-reveal="wipe"],[data-reveal="zoom"]{opacity:1 !important; transform:none !important;
+    clip-path:none !important}
+  [data-split] .wd > i{transform:none !important}
+}
+@media print{
+  #nav,#mnav,#flyout,#prog,#mist,.no-print{display:none !important}
+}
+</style>
+<link rel="stylesheet" href="assets/tw.css">
+</head>
+
+<body class="antialiased">
+<a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+<!-- ===================== TABIR PEMBUKA ===================== -->
+<div id="mist" aria-hidden="true">
+  <div class="panel top"></div>
+  <div class="panel bot"></div>
+  <div class="core">
+    <div class="kanji text-[26px] tracking-[.22em]">未来学院</div>
+    <div class="hairline-v"></div>
+    <div class="mono text-[13px] tracking-[.26em] text-white/60"><span id="mistNum">00</span> / 100</div>
+  </div>
+</div>
+
+<div id="prog"></div>
+
+<!-- ============================================================
+     NAVIGASI
+     ============================================================ -->
+<header id="nav" class="no-print">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10 h-[74px] flex items-center justify-between gap-6">
+    <a href="#beranda" class="flex items-center gap-3 shrink-0">
+      <span class="hanko" aria-hidden="true">未</span>
+      <span class="leading-none">
+        <span class="marc block text-[13.5px] tracking-[.06em] uppercase">Mirai Gakuin</span>
+        <span class="mono block text-[12px] tracking-[.16em] text-black/65 mt-1">LPK Jepang · Malang</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9 eyebrow text-[12px]" aria-label="Navigasi utama">
+      <a href="#tentang" class="link-wipe nav-a py-1.5 inline-block" data-target="tentang">Tentang</a>
+      <a href="#program" class="link-wipe nav-a py-1.5 inline-block" data-target="program">Program</a>
+      <a href="#alumni"  class="link-wipe nav-a py-1.5 inline-block" data-target="alumni">Alumni</a>
+      <a href="#alur"    class="link-wipe nav-a py-1.5 inline-block" data-target="alur">Alur</a>
+      <a href="#tanya"   class="link-wipe nav-a py-1.5 inline-block" data-target="tanya">Tanya</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#daftar" class="btn btn-primary hidden sm:inline-flex" data-magnetic data-cta>
+        Konsultasi<span class="arw" aria-hidden="true">→</span>
+      </a>
+      <button id="burger" class="lg:hidden w-11 h-11 grid place-items-center border hair rounded-full"
+              aria-label="Buka menu" aria-expanded="false">
+        <span class="block w-5">
+          <span class="block h-px bg-ink mb-[5px]"></span>
+          <span class="block h-px bg-ink"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- menu mobile -->
+<div id="mnav" class="no-print">
+  <button id="mclose" class="absolute top-6 right-6 w-11 h-11 grid place-items-center border border-white/20 rounded-full"
+          aria-label="Tutup menu">
+    <span class="relative block w-5 h-5">
+      <span class="absolute left-0 top-1/2 w-5 h-px bg-white/80 rotate-45"></span>
+      <span class="absolute left-0 top-1/2 w-5 h-px bg-white/80 -rotate-45"></span>
+    </span>
+  </button>
+  <nav class="px-8 flex flex-col gap-2">
+    <a href="#tentang" class="mlink" style="--i:0"><span class="display text-[13vw] leading-[1.05]">Tentang</span></a>
+    <a href="#program" class="mlink" style="--i:1"><span class="display text-[13vw] leading-[1.05]">Program</span></a>
+    <a href="#alumni"  class="mlink" style="--i:2"><span class="display text-[13vw] leading-[1.05]">Alumni</span></a>
+    <a href="#alur"    class="mlink" style="--i:3"><span class="display text-[13vw] leading-[1.05]">Alur</span></a>
+    <a href="#tanya"   class="mlink" style="--i:4"><span class="display text-[13vw] leading-[1.05]">Tanya</span></a>
+    <a href="#daftar"  class="mlink" style="--i:5"><span class="display text-[13vw] leading-[1.05] text-vermilion">Daftar</span></a>
+  </nav>
+  <div class="absolute bottom-8 left-8 right-8 flex items-center justify-between mono text-[12px] tracking-[.1em] text-white/65">
+    <span>Malang · Jawa Timur</span>
+    <span class="kanji tracking-[.06em]">未来への道</span>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="beranda" class="relative min-h-[100svh] flex flex-col justify-between overflow-hidden grain pt-[74px]">
+  <!-- ornamen -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="kanji absolute -right-[4vw] top-[4vh] text-[46vw] leading-none text-ink/[.035] select-none">未</div>
+    <div class="absolute left-0 top-0 h-full w-px bg-[var(--hair)] hidden md:block" style="margin-left:max(1.5rem,calc((100vw - 1500px)/2 + 2.5rem))"></div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-[1500px] px-6 md:px-10 flex-1 flex items-center">
+    <div class="grid grid-cols-12 gap-y-10 w-full items-end">
+
+      <div class="col-span-12 lg:col-span-8 xl:col-span-7">
+        <h1 class="display text-[13.5vw] sm:text-[9.5vw] lg:text-[5.4vw] xl:text-[74px] max-w-[15ch]" data-split="words">
+          Kerja di Jepang bukan keberuntungan.
+        </h1>
+          <p class="eyebrow-after eb-vermilion">Pelatihan Bahasa &amp; Keterampilan Jepang</p>
+
+        <p class="mt-7 max-w-[46ch] text-[15.5px] md:text-[16.5px] text-black/65 leading-[1.75]"
+           data-reveal style="--rv-y:24px; --rv-d:180ms">
+          Kami menyiapkan bahasa, keterampilan kerja, dan kesiapan mental sejak hari pertama.
+          Satu kelas maksimal 16 orang, didampingi sampai Anda benar-benar berangkat.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal style="--rv-y:20px; --rv-d:300ms">
+          <a href="#daftar" class="btn btn-primary" data-magnetic data-cta>
+            Mulai Konsultasi<span class="arw" aria-hidden="true">→</span>
+          </a>
+          <a href="#program" class="btn btn-ghost" data-magnetic>
+            Lihat Program
+          </a>
+        </div>
+      </div>
+
+      <aside class="col-span-12 lg:col-span-4 xl:col-span-5 lg:pl-10" data-reveal style="--rv-y:26px; --rv-d:420ms">
+        <div class="hair-t pt-6 grid grid-cols-2 gap-x-8 gap-y-7">
+          <div>
+            <div class="mono text-[26px] leading-none">1.480</div>
+            <div class="label text-[12px] text-black/70 mt-2">Alumni berangkat</div>
+          </div>
+          <div>
+            <div class="mono text-[26px] leading-none">92<span class="text-vermilion">%</span></div>
+            <div class="label text-[12px] text-black/70 mt-2">Lulus uji bahasa</div>
+          </div>
+          <div class="col-span-2">
+            <div class="hair-t pt-5 flex items-center gap-3">
+              <span class="kanji text-[13px] text-vermilion">日本</span>
+              <span class="text-[13px] text-black/60 leading-snug">
+                Kelas pagi, siang, dan malam. Biaya pelatihan bisa diangsur.
+              </span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- pita bawah hero -->
+  <div class="relative hair-t">
+    <div class="mx-auto max-w-[1500px] px-6 md:px-10 h-[62px] flex items-center justify-between gap-6">
+      <div class="flex items-center gap-4 text-black/65">
+        <span class="label text-[12px]">Gulir</span>
+        <span class="block w-10 h-px bg-ink/25 relative overflow-hidden" aria-hidden="true">
+          <span class="absolute inset-y-0 left-0 w-3 bg-vermilion" id="heroDash"></span>
+        </span>
+      </div>
+      <div class="hidden sm:flex items-center gap-7 mono text-[12px] tracking-[.08em] text-black/65">
+        <span>Seleksi tiap bulan</span>
+        <span class="w-px h-3 bg-ink/20"></span>
+        <span>Pengajar bersertifikat</span>
+      </div>
+      <div class="kanji text-[12px] text-black/65 tracking-[.22em] hidden md:block">未来への道</div>
+    </div>
+  </div>
+
+  <!-- teks vertikal -->
+  <div class="hidden xl:block absolute right-9 top-[40%]" aria-hidden="true">
+    <span class="va-text kanji text-[13px] text-black/60">挑戦の先に、夢がある</span>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="relative bg-sumi text-washi border-y hair-dark overflow-hidden">
+  <button id="mqToggle" type="button" aria-pressed="false" aria-label="Jeda gerak teks berjalan"><svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+  <div class="mask-x py-5">
+    <div class="marquee" style="--mq:44s">
+      <div class="flex items-center shrink-0">
+        <span class="label text-[12px] px-8 whitespace-nowrap">Bahasa Jepang N5 ke N4</span>
+        <span class="kanji text-[12px] text-brass px-3">語</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Keterampilan Kerja</span>
+        <span class="kanji text-[12px] text-brass px-3">技</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Perawatan Lansia</span>
+        <span class="kanji text-[12px] text-brass px-3">介</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Manufaktur Makanan</span>
+        <span class="kanji text-[12px] text-brass px-3">食</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Konstruksi</span>
+        <span class="kanji text-[12px] text-brass px-3">工</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Pertanian</span>
+        <span class="kanji text-[12px] text-brass px-3">農</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Perhotelan</span>
+        <span class="kanji text-[12px] text-brass px-3">接</span>
+      </div>
+      <div class="flex items-center shrink-0" aria-hidden="true">
+        <span class="label text-[12px] px-8 whitespace-nowrap">Bahasa Jepang N5 ke N4</span>
+        <span class="kanji text-[12px] text-brass px-3">語</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Keterampilan Kerja</span>
+        <span class="kanji text-[12px] text-brass px-3">技</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Perawatan Lansia</span>
+        <span class="kanji text-[12px] text-brass px-3">介</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Manufaktur Makanan</span>
+        <span class="kanji text-[12px] text-brass px-3">食</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Konstruksi</span>
+        <span class="kanji text-[12px] text-brass px-3">工</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Pertanian</span>
+        <span class="kanji text-[12px] text-brass px-3">農</span>
+        <span class="label text-[12px] px-8 whitespace-nowrap">Perhotelan</span>
+        <span class="kanji text-[12px] text-brass px-3">接</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     STATEMENT (kutipan editorial)
+     ============================================================ -->
+<section id="tentang" class="relative bg-sumi text-washi overflow-hidden">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="kanji absolute left-[-3vw] bottom-[-6vh] text-[38vw] leading-none text-white/[.028] select-none">道</div>
+  </div>
+
+  <div class="relative mx-auto max-w-[1500px] px-6 md:px-10 py-[clamp(5rem,11vh,9rem)]">
+    <div class="flex items-center gap-5 mb-14" data-reveal style="--rv-y:14px">
+      <span class="h-px w-14 bg-brass" aria-hidden="true"></span>
+      <span class="eyebrow text-brass-light">Falsafah Kerja Kami</span>
+    </div>
+
+    <blockquote class="max-w-[24ch] md:max-w-[30ch]">
+      <p class="quote-serif text-[9.2vw] md:text-[5.2vw] xl:text-[68px]" data-split="words">
+        Keberangkatan itu hasil latihan yang tidak dilewati.
+      </p>
+    </blockquote>
+
+    <div class="mt-12 grid grid-cols-12 gap-y-10">
+      <div class="col-span-12 md:col-span-3">
+        <div class="hair-t hair-dark pt-5">
+          <div class="mono text-[12px] tracking-[.1em] text-brass-light">01 / Dasar</div>
+          <div class="kanji text-[16px] mt-3 text-white/70 tracking-[.06em]">基本</div>
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-8 md:col-start-5">
+        <p class="text-[16px] md:text-[18px] leading-[1.85] text-white/70 max-w-[62ch] font-light"
+           data-reveal style="--rv-y:22px">
+          Banyak lembaga menjanjikan keberangkatan cepat, lalu peserta berhenti di tengah jalan
+          karena bahasa belum siap. Kami memilih jalur yang lebih lambat tapi pasti: penguasaan
+          dasar dulu, baru administrasi. Setiap peserta memiliki catatan kemajuan yang dievaluasi
+          dua minggu sekali bersama pengajar, dan kelas kami batasi 16 orang agar tidak ada yang
+          tertinggal tanpa terdeteksi.
+        </p>
+
+        <div class="mt-11 grid sm:grid-cols-3 gap-8 hair-t hair-dark pt-8">
+          <div>
+            <div class="num-lg text-[34px] text-brass-light">16</div>
+            <div class="label text-[12px] text-white/65 mt-2">Maksimal per kelas</div>
+          </div>
+          <div>
+            <div class="num-lg text-[34px] text-brass-light">340<span class="text-[17px] align-top">jp</span></div>
+            <div class="label text-[12px] text-white/65 mt-2">Jam pelatihan</div>
+          </div>
+          <div>
+            <div class="num-lg text-[34px] text-brass-light">2</div>
+            <div class="label text-[12px] text-white/65 mt-2">Evaluasi tiap bulan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROFIL - sticky dua kolom
+     ============================================================ -->
+<section class="relative bg-washi">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10 py-[clamp(5rem,11vh,9rem)]">
+    <div class="grid grid-cols-12 gap-y-12 lg:gap-x-16">
+
+      <!-- kolom sticky kiri -->
+      <div class="col-span-12 lg:col-span-5">
+        <div class="lg:sticky lg:top-[112px]">
+          <h2 class="display-strong text-[9vw] md:text-[6vw] lg:text-[46px] max-w-[16ch]" data-split="words">
+            Belajar dengan arah, bukan sekadar ikut kelas.
+          </h2>
+          <p class="eyebrow-after eb-vermilion">Tentang Lembaga</p>
+
+          <p class="mt-7 text-[15.5px] text-black/65 max-w-[44ch] leading-[1.78]"
+             data-reveal style="--rv-y:20px; --rv-d:140ms">
+            Kurikulum kami disusun dari kebutuhan kerja sebenarnya di Jepang, bukan dari buku
+            teks terjemahan. Anda berlatih percakapan kerja, etika industri, dan pengisian
+            dokumen yang akan Anda hadapi di sana.
+          </p>
+
+          <div class="mt-9 hair-t pt-7 space-y-4">
+            <div class="flex items-start gap-3.5" data-reveal style="--rv-y:16px; --rv-d:60ms">
+              <span class="hanko mt-0.5" aria-hidden="true">一</span>
+              <p class="text-[13.5px] text-black/65 leading-snug">
+                Pengajar lulusan pendidikan bahasa Jepang, sebagian pernah bekerja di Jepang.
+              </p>
+            </div>
+            <div class="flex items-start gap-3.5" data-reveal style="--rv-y:16px; --rv-d:150ms">
+              <span class="hanko mt-0.5" aria-hidden="true">二</span>
+              <p class="text-[13.5px] text-black/65 leading-snug">
+                Kelas praktik berpasangan supaya Anda terbiasa berbicara, bukan hanya menghafal.
+              </p>
+            </div>
+            <div class="flex items-start gap-3.5" data-reveal style="--rv-y:16px; --rv-d:240ms">
+              <span class="hanko mt-0.5" aria-hidden="true">三</span>
+              <p class="text-[13.5px] text-black/65 leading-snug">
+                Pendampingan dokumen dan wawancara sampai Anda dinyatakan siap berangkat.
+              </p>
+            </div>
+          </div>
+
+          <a href="#daftar" class="btn btn-ghost mt-9" data-magnetic>
+            Tanya syarat pendaftaran
+          </a>
+        </div>
+      </div>
+
+      <!-- kolom kanan: gambar + catatan -->
+      <div class="col-span-12 lg:col-span-7 lg:pt-4">
+        <figure class="reveal-img ph aspect-[4/3] rounded-[20px] grain" data-reveal="zoom">
+          <div class="wash" aria-hidden="true"></div>
+          <div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true">
+            <span class="kanji text-[19vw] lg:text-[190px] leading-none text-washi/[.14] select-none">学</span>
+          </div>
+          <figcaption class="absolute left-5 bottom-5 mono text-[12px] tracking-[.1em] text-washi/70">
+            Ruang latihan · Sesi percakapan kerja
+          </figcaption>
+        </figure>
+
+        <div class="grid sm:grid-cols-2 gap-6 mt-8">
+          <div class="hair-t pt-5" data-reveal style="--rv-y:22px">
+            <div class="eyebrow text-black/65">Jadwal</div>
+            <p class="text-[14px] text-black/70 mt-3 leading-relaxed">
+              Senin sampai Sabtu. Sesi pagi 08.00, siang 13.00, malam 18.30. Peserta memilih
+              satu sesi tetap agar kemajuan terukur.
+            </p>
+          </div>
+          <div class="hair-t pt-5" data-reveal style="--rv-y:22px; --rv-d:110ms">
+            <div class="eyebrow text-black/65">Biaya</div>
+            <p class="text-[14px] text-black/70 mt-3 leading-relaxed">
+              Dapat diangsur sampai tiga kali. Peserta yang belum lulus uji internal mengikuti
+              kelas tambahan tanpa biaya.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROGRAM - horizontal scroll
+     ============================================================ -->
+<section id="program" class="hs-shell">
+  <div class="hs-pin">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="kanji absolute right-[-2vw] top-[8vh] text-[30vw] leading-none text-white/[.022] select-none">技</div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-[1500px] px-6 md:px-10 pt-[74px]">
+      <div class="flex items-end justify-between gap-8 flex-wrap">
+        <div>
+          <h2 class="display text-[10vw] md:text-[6vw] xl:text-[54px] max-w-[20ch]">
+            Enam jalur, satu standar kelulusan.
+          </h2>
+          <p class="eyebrow-after eb-brass-on-dark">Program</p>
+        </div>
+        <div class="hidden md:flex items-center gap-5 pb-3">
+          <span class="mono text-[12px] tracking-[.1em] text-white/65">Geser untuk menelusuri</span>
+          <span class="block w-16 h-px bg-white/25 relative" aria-hidden="true">
+            <span class="hs-progress absolute inset-y-0 left-0 w-full bg-brass origin-left scale-x-0" id="hsBar"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hs-track mt-14" id="hsTrack">
+      <!-- 1 -->
+      <article class="hs-card group">
+        <div class="flex items-baseline justify-between hair-b hair-dark pb-4">
+          <span class="mono text-[13px] text-brass-light">01</span>
+          <span class="kanji text-[12px] text-white/60 tracking-[.06em]">語学</span>
+        </div>
+        <h3 class="marc text-[21px] mt-5">Bahasa Jepang Terpadu</h3>
+        <p class="text-[13.5px] text-white/60 leading-[1.75] mt-3">
+          N5 sampai N4 dengan latihan mendengar setiap hari. Fokus percakapan kerja dan
+          pemahaman instruksi di tempat kerja.
+        </p>
+        <div class="mt-6 ph aspect-[16/11] rounded-[16px] grain overflow-hidden">
+          <div class="wash" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"><span class="kanji text-[74px] text-washi/[.12]">語</span></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+        <div class="mt-5 flex items-center justify-between mono text-[13px] text-white/65">
+          <span>240 jam</span><span>N5 → N4</span>
+        </div>
+      </article>
+      <!-- 2 -->
+      <article class="hs-card group">
+        <div class="flex items-baseline justify-between hair-b hair-dark pb-4">
+          <span class="mono text-[13px] text-brass-light">02</span>
+          <span class="kanji text-[12px] text-white/60 tracking-[.06em]">介護</span>
+        </div>
+        <h3 class="marc text-[21px] mt-5">Perawatan Lansia</h3>
+        <p class="text-[13.5px] text-white/60 leading-[1.75] mt-3">
+          Teknik dasar perawatan, keselamatan peserta, dan komunikasi dengan penghuni serta
+          keluarga. Termasuk praktik alat bantu.
+        </p>
+        <div class="mt-6 ph aspect-[16/11] rounded-[16px] grain overflow-hidden">
+          <div class="wash" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"><span class="kanji text-[74px] text-washi/[.12]">介</span></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+        <div class="mt-5 flex items-center justify-between mono text-[13px] text-white/65">
+          <span>180 jam</span><span>Kaigo dasar</span>
+        </div>
+      </article>
+      <!-- 3 -->
+      <article class="hs-card group">
+        <div class="flex items-baseline justify-between hair-b hair-dark pb-4">
+          <span class="mono text-[13px] text-brass-light">03</span>
+          <span class="kanji text-[12px] text-white/60 tracking-[.06em]">食品</span>
+        </div>
+        <h3 class="marc text-[21px] mt-5">Manufaktur Makanan</h3>
+        <p class="text-[13.5px] text-white/60 leading-[1.75] mt-3">
+          Kebersihan pabrik, pengoperasian mesin, dan pengendalian mutu. Latihan memakai
+          istilah teknis yang dipakai di lini produksi.
+        </p>
+        <div class="mt-6 ph aspect-[16/11] rounded-[16px] grain overflow-hidden">
+          <div class="wash" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"><span class="kanji text-[74px] text-washi/[.12]">食</span></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+        <div class="mt-5 flex items-center justify-between mono text-[13px] text-white/65">
+          <span>160 jam</span><span>Shokuhin</span>
+        </div>
+      </article>
+      <!-- 4 -->
+      <article class="hs-card group">
+        <div class="flex items-baseline justify-between hair-b hair-dark pb-4">
+          <span class="mono text-[13px] text-brass-light">04</span>
+          <span class="kanji text-[12px] text-white/60 tracking-[.06em]">建設</span>
+        </div>
+        <h3 class="marc text-[21px] mt-5">Konstruksi &amp; Fabrikasi</h3>
+        <p class="text-[13.5px] text-white/60 leading-[1.75] mt-3">
+          Keselamatan kerja, membaca gambar sederhana, dan penggunaan alat dasar. Pengenalan
+          aturan keselamatan yang ketat di proyek Jepang.
+        </p>
+        <div class="mt-6 ph aspect-[16/11] rounded-[16px] grain overflow-hidden">
+          <div class="wash" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"><span class="kanji text-[74px] text-washi/[.12]">工</span></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+        <div class="mt-5 flex items-center justify-between mono text-[13px] text-white/65">
+          <span>150 jam</span><span>Kensetsu</span>
+        </div>
+      </article>
+      <!-- 5 -->
+      <article class="hs-card group">
+        <div class="flex items-baseline justify-between hair-b hair-dark pb-4">
+          <span class="mono text-[13px] text-brass-light">05</span>
+          <span class="kanji text-[12px] text-white/60 tracking-[.06em]">農業</span>
+        </div>
+        <h3 class="marc text-[21px] mt-5">Pertanian &amp; Perkebunan</h3>
+        <p class="text-[13.5px] text-white/60 leading-[1.75] mt-3">
+          Siklus tanam, penanganan hasil, dan penggunaan mesin kebun. Termasuk pengenalan
+          cuaca musim kerja di Jepang.
+        </p>
+        <div class="mt-6 ph aspect-[16/11] rounded-[16px] grain overflow-hidden">
+          <div class="wash" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"><span class="kanji text-[74px] text-washi/[.12]">農</span></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+        <div class="mt-5 flex items-center justify-between mono text-[13px] text-white/65">
+          <span>140 jam</span><span>Nougyou</span>
+        </div>
+      </article>
+      <!-- 6 -->
+      <article class="hs-card group">
+        <div class="flex items-baseline justify-between hair-b hair-dark pb-4">
+          <span class="mono text-[13px] text-brass-light">06</span>
+          <span class="kanji text-[12px] text-white/60 tracking-[.06em]">接客</span>
+        </div>
+        <h3 class="marc text-[21px] mt-5">Perhotelan &amp; Layanan</h3>
+        <p class="text-[13.5px] text-white/60 leading-[1.75] mt-3">
+          Bahasa sopan (keigo), pelayanan tamu, dan penanganan keluhan. Latihan bermain peran
+          dengan situasi nyata di hotel dan restoran.
+        </p>
+        <div class="mt-6 ph aspect-[16/11] rounded-[16px] grain overflow-hidden">
+          <div class="wash" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"><span class="kanji text-[74px] text-washi/[.12]">接</span></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+        <div class="mt-5 flex items-center justify-between mono text-[13px] text-white/65">
+          <span>170 jam</span><span>Omotenashi</span>
+        </div>
+      </article>
+
+      <!-- kartu ajakan di ujung -->
+      <article class="hs-card flex items-center">
+        <div class="hair-t hair-dark pt-7">
+          <div class="kanji text-brass-light text-[13px] tracking-[.1em]">資料請求</div>
+          <h3 class="display text-[34px] mt-5 max-w-[13ch] leading-[1.08]">
+            Belum yakin pilih yang mana?
+          </h3>
+          <p class="text-[13.5px] text-white/60 mt-4 max-w-[30ch] leading-[1.75]">
+            Kirim latar belakang pendidikan dan minat Anda. Kami bantu cocokkan dengan jalur
+            yang paling realistis.
+          </p>
+          <a href="#daftar" class="btn btn-light mt-7" data-magnetic data-cta>
+            Minta rekomendasi<span class="arw" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-[1500px] px-6 md:px-10 mt-12 hidden md:block">
+      <div class="hair-t hair-dark pt-5 flex items-center justify-between mono text-[12px] tracking-[.08em] text-white/65">
+        <span>06 Program · Standar kelulusan sama</span>
+        <span class="kanji tracking-[.1em] text-white/70">挑戦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ALUMNI - kartu orang, dua baris berjalan
+     ============================================================ -->
+<section id="alumni" class="relative bg-washi-2 py-[clamp(5rem,11vh,9rem)] overflow-hidden grain">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10">
+    <div class="flex items-end justify-between gap-8 flex-wrap mb-12">
+      <div>
+        <h2 class="display-strong text-[10vw] md:text-[6vw] xl:text-[50px] max-w-[22ch]" data-split="words">
+          Mereka yang sudah berangkat lebih dulu.
+        </h2>
+          <p class="eyebrow-after eb-vermilion">Alumni</p>
+      </div>
+      <p class="text-[14.5px] text-black/60 max-w-[38ch] leading-[1.75] pb-2" data-reveal style="--rv-y:20px">
+        Nama dan kota kerja ditampilkan dengan izin mereka. Foto tidak kami tampilkan untuk
+        menjaga privasi peserta.
+      </p>
+    </div>
+  </div>
+
+  <!-- baris 1 -->
+  <div class="mask-x">
+    <div class="marquee" style="--mq:52s">
+      <div class="flex gap-5 pr-5 shrink-0">
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5 px-0">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">和</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Rizky Nurwanto</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2021</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Awalnya saya takut salah bicara. Latihan berpasangan tiap hari membuat saya berani.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perawatan lansia</span><span>Osaka</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">努</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Dewi Anggraini</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2020</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Yang paling membantu justru evaluasi dua mingguan. Saya tahu bagian mana yang lemah.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Manufaktur makanan</span><span>Nagoya</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">誠</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Bagas Prakoso</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2022</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Dokumen saya sempat bermasalah. Tim di sini yang mengurus sampai tuntas.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Konstruksi</span><span>Aichi</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">学</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Sari Melati</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2021</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Kelasnya kecil jadi tidak bisa bersembunyi di belakang. Itu bagus untuk saya.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perhotelan</span><span>Hokkaido</span>
+          </div>
+        </article>
+      </div>
+      <div class="flex gap-5 pr-5 shrink-0" aria-hidden="true">
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">和</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Rizky Nurwanto</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2021</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Awalnya saya takut salah bicara. Latihan berpasangan tiap hari membuat saya berani.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perawatan lansia</span><span>Osaka</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">努</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Dewi Anggraini</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2020</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Yang paling membantu justru evaluasi dua mingguan. Saya tahu bagian mana yang lemah.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Manufaktur makanan</span><span>Nagoya</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">誠</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Bagas Prakoso</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2022</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Dokumen saya sempat bermasalah. Tim di sini yang mengurus sampai tuntas.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Konstruksi</span><span>Aichi</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">学</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Sari Melati</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2021</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Kelasnya kecil jadi tidak bisa bersembunyi di belakang. Itu bagus untuk saya.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perhotelan</span><span>Hokkaido</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- baris 2, arah berlawanan -->
+  <div class="mask-x mt-6">
+    <div class="marquee" style="--mq:60s; animation-direction:reverse">
+      <div class="flex gap-5 pr-5 shrink-0">
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">夢</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Hendra Wijaya</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2019</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Saya sudah bekerja empat tahun di sana. Dasar etika kerja saya dari kelas ini.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Pertanian</span><span>Ibaraki</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">忍</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Nurul Hidayah</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2022</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Wawancara simulasi tiga kali membuat saya tenang saat wawancara sebenarnya.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perawatan lansia</span><span>Tokyo</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">信</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Fajar Ramadhan</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2020</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Biaya diangsur tiga kali, jadi saya bisa mulai tanpa menunggu uang terkumpul.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Manufaktur makanan</span><span>Shizuoka</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko" aria-hidden="true">光</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Intan Permatasari</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2023</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Pengajarnya pernah kerja di Jepang, jadi ceritanya bukan teori.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perhotelan</span><span>Kyoto</span>
+          </div>
+        </article>
+      </div>
+      <div class="flex gap-5 pr-5 shrink-0" aria-hidden="true">
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">夢</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Hendra Wijaya</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2019</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Saya sudah bekerja empat tahun di sana. Dasar etika kerja saya dari kelas ini.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Pertanian</span><span>Ibaraki</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">忍</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Nurul Hidayah</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2022</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Wawancara simulasi tiga kali membuat saya tenang saat wawancara sebenarnya.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perawatan lansia</span><span>Tokyo</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">信</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Fajar Ramadhan</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2020</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Biaya diangsur tiga kali, jadi saya bisa mulai tanpa menunggu uang terkumpul.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Manufaktur makanan</span><span>Shizuoka</span>
+          </div>
+        </article>
+        <article class="w-[290px] shrink-0 bg-washi hair-t pt-5">
+          <div class="flex items-center gap-3">
+            <span class="hanko">光</span>
+            <div>
+              <div class="text-[14.5px] font-medium">Intan Permatasari</div>
+              <div class="mono text-[12px] text-black/65 mt-1">Angkatan 2023</div>
+            </div>
+          </div>
+          <p class="quote-serif text-[19px] mt-4 leading-[1.3] text-black/80">
+            Pengajarnya pernah kerja di Jepang, jadi ceritanya bukan teori.
+          </p>
+          <div class="hair-t mt-4 pt-3 flex items-center justify-between label text-[12px] text-black/65">
+            <span>Perhotelan</span><span>Kyoto</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ALUR - enam langkah
+     ============================================================ -->
+<section id="alur" class="relative bg-washi">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10 py-[clamp(5rem,11vh,9rem)]">
+    <div class="grid grid-cols-12 gap-y-10 mb-16">
+      <div class="col-span-12 lg:col-span-5">
+        <h2 class="display-strong text-[10vw] md:text-[6vw] lg:text-[46px] max-w-[17ch]" data-split="words">
+          Dari pertanyaan pertama sampai tiket pesawat.
+        </h2>
+          <p class="eyebrow-after eb-vermilion">Alur Pendaftaran</p>
+      </div>
+      <div class="col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-20">
+        <p class="text-[15.5px] text-black/60 leading-[1.8] max-w-[52ch]" data-reveal style="--rv-y:20px">
+          Tidak ada biaya untuk langkah pertama. Anda datang, kami dengar rencana Anda, lalu
+          kami sampaikan apa adanya apakah jalur ini cocok atau sebaiknya ditunda.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-x-10 gap-y-0">
+      <div class="hair-t py-7" data-reveal style="--rv-y:22px">
+        <div class="flex items-start gap-4">
+          <span class="num-lg text-[38px] text-vermilion">01</span>
+          <div>
+            <h3 class="marc text-[17px]">Konsultasi Awal</h3>
+            <p class="text-[13.5px] text-black/60 leading-[1.72] mt-2.5">
+              Ceritakan pendidikan terakhir, kondisi kesehatan, dan tujuan Anda. Sesi 30 menit,
+              gratis, tanpa kewajiban mendaftar.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hair-t py-7 md:pl-0" data-reveal style="--rv-y:22px; --rv-d:90ms">
+        <div class="flex items-start gap-4">
+          <span class="num-lg text-[38px] text-vermilion">02</span>
+          <div>
+            <h3 class="marc text-[17px]">Tes Penempatan</h3>
+            <p class="text-[13.5px] text-black/60 leading-[1.72] mt-2.5">
+              Tes tulis dan wawancara singkat untuk menentukan level awal. Hasil tes menentukan
+              berapa lama pelatihan Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hair-t py-7" data-reveal style="--rv-y:22px; --rv-d:180ms">
+        <div class="flex items-start gap-4">
+          <span class="num-lg text-[38px] text-vermilion">03</span>
+          <div>
+            <h3 class="marc text-[17px]">Pelatihan Bahasa</h3>
+            <p class="text-[13.5px] text-black/60 leading-[1.72] mt-2.5">
+              Kelas reguler dengan evaluasi dua mingguan. Peserta yang tertinggal mendapat sesi
+              tambahan tanpa biaya ekstra.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hair-t py-7" data-reveal style="--rv-y:22px">
+        <div class="flex items-start gap-4">
+          <span class="num-lg text-[38px] text-vermilion">04</span>
+          <div>
+            <h3 class="marc text-[17px]">Pelatihan Keterampilan</h3>
+            <p class="text-[13.5px] text-black/60 leading-[1.72] mt-2.5">
+              Praktik bidang kerja pilihan Anda, termasuk uji kemampuan internal sebelum
+              diikutkan seleksi.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hair-t py-7" data-reveal style="--rv-y:22px; --rv-d:90ms">
+        <div class="flex items-start gap-4">
+          <span class="num-lg text-[38px] text-vermilion">05</span>
+          <div>
+            <h3 class="marc text-[17px]">Seleksi &amp; Dokumen</h3>
+            <p class="text-[13.5px] text-black/60 leading-[1.72] mt-2.5">
+              Kami siapkan berkas, latih wawancara, dan dampingi proses pemeriksaan kesehatan
+              serta perizinan.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hair-t py-7" data-reveal style="--rv-y:22px; --rv-d:180ms">
+        <div class="flex items-start gap-4">
+          <span class="num-lg text-[38px] text-vermilion">06</span>
+          <div>
+            <h3 class="marc text-[17px]">Berangkat &amp; Pendampingan</h3>
+            <p class="text-[13.5px] text-black/60 leading-[1.72] mt-2.5">
+              Pembekalan sebelum keberangkatan. Kami tetap bisa dihubungi saat Anda sudah
+              bekerja di Jepang.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TANYA - akordeon
+     ============================================================ -->
+<section id="tanya" class="relative bg-washi-2 py-[clamp(5rem,11vh,9rem)] grain">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10">
+    <div class="grid grid-cols-12 gap-y-12 lg:gap-x-16">
+      <div class="col-span-12 lg:col-span-4">
+        <div class="lg:sticky lg:top-[112px]">
+          <h2 class="display-strong text-[10vw] md:text-[6vw] lg:text-[44px] max-w-[14ch]" data-split="words">
+            Yang sering ditanyakan sebelum daftar.
+          </h2>
+          <p class="eyebrow-after eb-vermilion">Pertanyaan Umum</p>
+          <p class="text-[14.5px] text-black/60 mt-6 max-w-[34ch] leading-[1.75]"
+             data-reveal style="--rv-y:20px">
+            Tidak menemukan jawaban Anda? Kirim pertanyaan lewat WhatsApp, dijawab pada jam
+            kerja yang tertera di bawah.
+          </p>
+          <a href="#daftar" class="btn btn-ghost mt-7" data-magnetic>Tanya langsung</a>
+        </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-7 lg:col-start-6">
+        <div class="acc" id="acc">
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">
+              <span class="marc text-[17.5px] pr-4">Apakah harus bisa bahasa Jepang dari nol?</span>
+              <span class="acc-mark" aria-hidden="true"></span>
+            </button>
+            <div class="acc-body"><div>
+              <p class="text-[14.5px] text-black/65 leading-[1.8] max-w-[62ch]">
+                Tidak. Kelas dasar dimulai dari nol, termasuk pengenalan huruf hiragana dan
+                katakana. Yang kami minta hanya kesediaan hadir rutin dan mengerjakan latihan
+                harian, minimal 45 menit di luar kelas.
+              </p>
+            </div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">
+              <span class="marc text-[17.5px] pr-4">Bagaimana skema pembayaran biaya pelatihan?</span>
+              <span class="acc-mark" aria-hidden="true"></span>
+            </button>
+            <div class="acc-body"><div>
+              <p class="text-[14.5px] text-black/65 leading-[1.8] max-w-[62ch]">
+                Pembayaran dapat diangsur sampai tiga kali selama masa pelatihan. Tidak ada
+                biaya tambahan untuk kelas remedial. Rincian biaya kami sampaikan tertulis
+                pada saat konsultasi awal, bukan setelah Anda mendaftar.
+              </p>
+            </div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">
+              <span class="marc text-[17.5px] pr-4">Berapa lama sampai benar-benar berangkat?</span>
+              <span class="acc-mark" aria-hidden="true"></span>
+            </button>
+            <div class="acc-body"><div>
+              <p class="text-[14.5px] text-black/65 leading-[1.8] max-w-[62ch]">
+                Rata-rata 8 sampai 14 bulan sejak kelas dimulai, tergantung level awal,
+                bidang kerja, dan kecepatan proses dokumen. Kami tidak memberi janji waktu
+                yang tidak bisa dipenuhi; jadwal perkiraan Anda akan dicantumkan tertulis.
+              </p>
+            </div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">
+              <span class="marc text-[17.5px] pr-4">Apakah ada jaminan langsung bekerja?</span>
+              <span class="acc-mark" aria-hidden="true"></span>
+            </button>
+            <div class="acc-body"><div>
+              <p class="text-[14.5px] text-black/65 leading-[1.8] max-w-[62ch]">
+                Kami tidak menjanjikan hal itu. Yang kami tanggung adalah pendampingan sampai
+                Anda siap secara bahasa, keterampilan, dan administrasi, serta penyaluran ke
+                mitra penempatan resmi. Hasil seleksi tetap ditentukan kesesuaian Anda dengan
+                permintaan pemberi kerja.
+              </p>
+            </div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">
+              <span class="marc text-[17.5px] pr-4">Saya sudah bekerja, apakah bisa ikut kelas malam?</span>
+              <span class="acc-mark" aria-hidden="true"></span>
+            </button>
+            <div class="acc-body"><div>
+              <p class="text-[14.5px] text-black/65 leading-[1.8] max-w-[62ch]">
+                Bisa. Sesi malam dimulai 18.30 dan berakhir 20.30, tersedia Senin sampai Jumat.
+                Sekitar sepertiga peserta kami adalah pekerja yang menyiapkan diri sebelum
+                berhenti dari pekerjaan saat ini.
+              </p>
+            </div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-btn" aria-expanded="false">
+              <span class="marc text-[17.5px] pr-4">Syarat kesehatan seperti apa yang diminta?</span>
+              <span class="acc-mark" aria-hidden="true"></span>
+            </button>
+            <div class="acc-body"><div>
+              <p class="text-[14.5px] text-black/65 leading-[1.8] max-w-[62ch]">
+                Pemeriksaan kesehatan dilakukan di fasilitas yang ditunjuk, mencakup pemeriksaan
+                umum, paru, dan kondisi yang memengaruhi kemampuan kerja. Kami sarankan
+                konsultasi awal untuk memetakan ini lebih dulu supaya tidak membuang waktu.
+              </p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DAFTAR - form
+     ============================================================ -->
+<section id="daftar" class="relative bg-sumi text-washi overflow-hidden">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="kanji absolute right-[-4vw] bottom-[-8vh] text-[36vw] leading-none text-white/[.025] select-none">結</div>
+  </div>
+
+  <div class="relative mx-auto max-w-[1500px] px-6 md:px-10 py-[clamp(5rem,11vh,9rem)]">
+    <div class="grid grid-cols-12 gap-y-12 lg:gap-x-16 items-start">
+
+      <div class="col-span-12 lg:col-span-5">
+        <h2 class="display text-[11vw] md:text-[6.5vw] lg:text-[52px] max-w-[15ch] leading-[1.04]" data-split="words">
+          Isi datanya, kami hubungi hari itu juga.
+        </h2>
+          <p class="eyebrow-after eb-brass-on-dark">Pendaftaran</p>
+        <p class="text-[15.5px] text-white/65 mt-7 max-w-[42ch] leading-[1.8]"
+           data-reveal style="--rv-y:20px; --rv-d:120ms">
+          Satu formulir singkat. Tidak ada biaya untuk konsultasi dan tidak ada kewajiban
+          mendaftar setelahnya.
+        </p>
+
+        <div class="mt-10 hair-t hair-dark pt-8 space-y-5">
+          <div class="flex items-start gap-4" data-reveal style="--rv-y:16px">
+            <span class="mono text-[12px] text-brass-light pt-1">Telepon</span>
+            <div>
+              <a href="tel:+6281234567890" class="link-wipe text-[16px] inline-block py-1.5">+62 812 3456 7890</a>
+              <div class="mono text-[12px] text-white/60 mt-1.5">WhatsApp aktif</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4" data-reveal style="--rv-y:16px; --rv-d:90ms">
+            <span class="mono text-[12px] text-brass-light pt-1">Email</span>
+            <div>
+              <a href="mailto:halo@miraigakuin.co.id" class="link-wipe text-[16px] inline-block py-1.5">halo@miraigakuin.co.id</a>
+              <div class="mono text-[12px] text-white/60 mt-1.5">Dijawab 1 x 24 jam</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4" data-reveal style="--rv-y:16px; --rv-d:180ms">
+            <span class="mono text-[12px] text-brass-light pt-1">ALM</span>
+            <div>
+              <p class="text-[16px] leading-snug">Jl. Soekarno Hatta No. 24, Malang</p>
+              <div class="mono text-[12px] text-white/60 mt-1.5">Senin sampai Sabtu, 08.00 sampai 16.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-6 lg:col-start-7">
+        <div class="bg-washi text-ink rounded-[20px] p-7 md:p-9 grain relative" data-reveal="zoom">
+          <div class="flex items-center justify-between gap-6 hair-b pb-5 mb-7">
+            <span class="eyebrow text-black/65">Formulir Konsultasi</span>
+            <span class="kanji text-[12px] text-vermilion tracking-[.06em]">申込</span>
+          </div>
+
+          <form id="formDaftar" class="space-y-6" novalidate>
+            <div>
+              <label for="f-nama" class="label text-[12px] text-black/70 block mb-2.5">Nama lengkap</label>
+              <input id="f-nama" name="nama" type="text" required autocomplete="name"
+                     class="w-full bg-transparent border-0 border-b border-black/20 focus:border-vermilion focus:ring-0 px-0 py-3 text-[16px] placeholder:text-black/55 transition-colors duration-500"
+                     placeholder="Sesuai KTP">
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="f-wa" class="label text-[12px] text-black/70 block mb-2.5">WhatsApp</label>
+                <input id="f-wa" name="whatsapp" type="tel" required inputmode="numeric" autocomplete="tel"
+                       class="w-full bg-transparent border-0 border-b border-black/20 focus:border-vermilion focus:ring-0 px-0 py-3 text-[16px] placeholder:text-black/55 transition-colors duration-500"
+                       placeholder="08xx xxxx xxxx">
+              </div>
+              <div>
+                <label for="f-usia" class="label text-[12px] text-black/70 block mb-2.5">Usia</label>
+                <input id="f-usia" name="usia" type="text" inputmode="numeric"
+                       class="w-full bg-transparent border-0 border-b border-black/20 focus:border-vermilion focus:ring-0 px-0 py-3 text-[16px] placeholder:text-black/55 transition-colors duration-500"
+                       placeholder="Contoh: 23">
+              </div>
+            </div>
+            <div>
+              <label for="f-program" class="label text-[12px] text-black/70 block mb-2.5">Program yang diminati</label>
+              <select id="f-program" name="program"
+                      class="w-full bg-transparent border-0 border-b border-black/20 focus:border-vermilion focus:ring-0 px-0 py-3 text-[16px] transition-colors duration-500 appearance-none">
+                <option value="">Pilih program</option>
+                <option>Bahasa Jepang Terpadu</option>
+                <option>Perawatan Lansia</option>
+                <option>Manufaktur Makanan</option>
+                <option>Konstruksi &amp; Fabrikasi</option>
+                <option>Pertanian &amp; Perkebunan</option>
+                <option>Perhotelan &amp; Layanan</option>
+                <option>Belum tahu, minta rekomendasi</option>
+              </select>
+            </div>
+            <div>
+              <label for="f-catatan" class="label text-[12px] text-black/70 block mb-2.5">Catatan (opsional)</label>
+              <textarea id="f-catatan" name="catatan" rows="3"
+                        class="w-full bg-transparent border-0 border-b border-black/20 focus:border-vermilion focus:ring-0 px-0 py-3 text-[16px] resize-none placeholder:text-black/55 transition-colors duration-500"
+                        placeholder="Kondisi atau pertanyaan khusus"></textarea>
+            </div>
+
+            <label class="flex items-start gap-3 pt-1 cursor-pointer">
+              <input type="checkbox" required class="mt-1 w-6 h-6 shrink-0 rounded-sm border-black/35 text-vermilion focus:ring-vermilion transition">
+              <span class="text-[13px] text-black/60 leading-snug">
+                Saya bersedia dihubungi lewat WhatsApp pada jam kerja.
+              </span>
+            </label>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button type="submit" class="btn btn-primary" data-magnetic data-cta>
+                Kirim &amp; minta dihubungi<span class="arw" aria-hidden="true">→</span>
+              </button>
+              <a href="https://wa.me/6281234567890" class="btn btn-ghost" data-magnetic>
+                Langsung WhatsApp
+              </a>
+            </div>
+            <p id="formNote" class="text-[12px] text-black/65 hidden"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PENUTUP
+     ============================================================ -->
+<section class="relative bg-washi-3 border-t hair">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10 py-[clamp(4rem,9vh,7rem)]">
+    <div class="grid grid-cols-12 gap-y-10 items-center">
+      <div class="col-span-12 md:col-span-7">
+        <h2 class="display text-[9vw] md:text-[4.6vw] xl:text-[46px] max-w-[22ch] leading-[1.08]" data-split="words">
+          Kalau rencananya sudah matang, mulai dari satu percakapan.
+        </h2>
+        <p class="eyebrow-after eb-vermilion" data-reveal style="--rv-y:12px">Langkah berikutnya</p>
+      </div>
+      <div class="col-span-12 md:col-span-5 md:text-right" data-reveal style="--rv-y:20px">
+        <a href="#daftar" class="btn btn-primary" data-magnetic data-cta>
+          Mulai konsultasi<span class="arw" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="relative bg-sumi text-washi pt-[clamp(3.5rem,7vh,5.5rem)] pb-10">
+  <div class="mx-auto max-w-[1500px] px-6 md:px-10">
+    <div class="grid grid-cols-12 gap-y-10 pb-14">
+      <div class="col-span-12 lg:col-span-5">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="hanko" aria-hidden="true">未</span>
+          <span class="marc text-[13.5px] tracking-[.06em] uppercase">Mirai Gakuin</span>
+        </div>
+        <p class="text-[14px] text-white/60 max-w-[40ch] leading-[1.8]">
+          Lembaga pelatihan bahasa dan keterampilan kerja Jepang di Malang. Kelas kecil,
+          evaluasi berkala, pendampingan sampai keberangkatan.
+        </p>
+        <div class="kanji text-[13px] text-brass-light tracking-[.16em] mt-7">未来学院 · マラン</div>
+      </div>
+
+      <div class="col-span-6 lg:col-span-2">
+        <div class="label text-[12px] text-white/60 mb-5">Halaman</div>
+        <ul class="space-y-3 text-[14px] text-white/70">
+          <li><a href="#tentang" class="link-wipe inline-block py-1">Tentang</a></li>
+          <li><a href="#program" class="link-wipe inline-block py-1">Program</a></li>
+          <li><a href="#alumni" class="link-wipe inline-block py-1">Alumni</a></li>
+          <li><a href="#alur" class="link-wipe inline-block py-1">Alur</a></li>
+          <li><a href="#tanya" class="link-wipe inline-block py-1">Tanya</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-6 lg:col-span-2">
+        <div class="label text-[12px] text-white/60 mb-5">Program</div>
+        <ul class="space-y-3 text-[14px] text-white/70">
+          <li>Bahasa Jepang</li>
+          <li>Perawatan Lansia</li>
+          <li>Manufaktur Makanan</li>
+          <li>Konstruksi</li>
+          <li>Perhotelan</li>
+        </ul>
+      </div>
+
+      <div class="col-span-12 lg:col-span-3">
+        <div class="label text-[12px] text-white/60 mb-5">Kontak</div>
+        <ul class="space-y-4 text-[14px] text-white/70">
+          <li><a href="tel:+6281234567890" class="link-wipe inline-block py-1.5">+62 812 3456 7890</a></li>
+          <li><a href="mailto:halo@miraigakuin.co.id" class="link-wipe inline-block py-1.5">halo@miraigakuin.co.id</a></li>
+          <li class="text-white/60 leading-snug">Jl. Soekarno Hatta No. 24,<br>Malang, Jawa Timur</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hair-t hair-dark pt-7 flex flex-wrap items-center justify-between gap-5 mono text-[12px] text-white/65">
+      <span>© <span id="yr">2026</span> Mirai Gakuin · Malang</span>
+      <span class="flex items-center gap-4">
+        <span class="kanji text-[13px] text-white/70 tracking-[.1em]">挑戦 · 努力 · 成長</span>
+      </span>
+      <span>Halaman contoh untuk pratinjau</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     TOMBOL MENGAMBANG
+     ============================================================ -->
+<div id="flyout" class="no-print">
+  <a href="#daftar" class="group flex items-center gap-3 bg-ink text-washi rounded-full pl-5 pr-6 py-3.5 ring-4 ring-washi/85 shadow-[0_18px_50px_-18px_rgba(12,12,14,.6)]" data-cta>
+    <span class="hanko" aria-hidden="true">相</span>
+    <span class="label text-[12px]">Konsultasi Gratis</span>
+    <span class="arw transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true">→</span>
+  </a>
+</div>
+
+<!-- ============================================================
+     MODAL PRATINJAU
+     ============================================================ -->
+<div id="demoModal" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(12,12,14,.8); z-index:999999; backdrop-filter:blur(7px); align-items:center; justify-content:center; padding:16px;">
+  <div class="bg-washi text-ink rounded-[20px] max-w-[420px] w-full p-8 text-center grain relative">
+    <span class="hanko mx-auto mb-5" aria-hidden="true">見</span>
+    <h3 class="display-strong text-[26px] leading-tight">Ini halaman contoh.</h3>
+    <p class="eyebrow-after eb-vermilion" style="justify-content:center">Pratinjau</p>
+    <p class="text-[14px] text-black/60 mt-4 leading-[1.75]">
+      Halaman ini dibuat sebagai gambaran tampilan. Isi teks, foto, dan informasi kontak
+      menyesuaikan data usaha Anda setelah pemesanan.
+    </p>
+    <button type="button" id="closeModal" class="btn btn-primary mt-7 w-full">Mengerti</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- tahun ---------- */
+  var yr = document.getElementById("yr");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---------- pisah teks per kata ---------- */
+  document.querySelectorAll("[data-split]").forEach(function(el){
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    var i = 0;
+    el.textContent = "";
+    nodes.forEach(function(node){
+      if (node.nodeType === 3){
+        node.textContent.split(/(\s+)/).forEach(function(tok){
+          if (!tok) return;
+          if (/^\s+$/.test(tok)){ el.appendChild(document.createTextNode(" ")); return; }
+          var w = document.createElement("span"); w.className = "wd";
+          var inner = document.createElement("i");
+          inner.textContent = tok;
+          inner.style.setProperty("--i", i++);
+          w.appendChild(inner); el.appendChild(w);
+        });
+      } else if (node.nodeType === 1){
+        var keep = node.cloneNode(true);
+        var w = document.createElement("span"); w.className = "wd";
+        var inner = document.createElement("i");
+        inner.style.setProperty("--i", i++);
+        inner.appendChild(keep);
+        w.appendChild(inner); el.appendChild(w);
+      }
+    });
+  });
+
+  /* ---------- pengamat tampilan ---------- */
+  var targets = document.querySelectorAll("[data-reveal], [data-split], .reveal-img");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          en.target.classList.add("is-in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.13 });
+    targets.forEach(function(t){ io.observe(t); });
+  } else {
+    targets.forEach(function(t){ t.classList.add("is-in"); });
+  }
+
+  /* ---------- bilah kemajuan + navigasi ---------- */
+  var nav = document.getElementById("nav");
+  var prog = document.getElementById("prog");
+  var last = window.scrollY || 0;
+
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (prog) prog.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+    if (nav){
+      if (y > 24) nav.classList.add("solid"); else nav.classList.remove("solid");
+      if (y > 420 && y > last + 4) nav.classList.add("hide");
+      else if (y < last - 4) nav.classList.remove("hide");
+    }
+    last = y;
+    parallax();
+    heroDash();
+    hs();
+  }
+
+  /* ---------- parallax ---------- */
+  var pl = document.querySelectorAll("[data-parallax]");
+  function parallax(){
+    if (reduce || !pl.length) return;
+    var vh = window.innerHeight;
+    pl.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      var sp = parseFloat(el.getAttribute("data-parallax")) || 0.1;
+      var mid = r.top + r.height / 2 - vh / 2;
+      el.style.transform = "translate3d(0," + (-mid * sp).toFixed(2) + "px,0)";
+    });
+  }
+
+  /* ---------- garis kecil di hero ---------- */
+  var dash = document.getElementById("heroDash");
+  function heroDash(){
+    if (!dash) return;
+    var y = window.scrollY || 0;
+    var p = Math.min(1, y / Math.max(1, window.innerHeight * 0.6));
+    dash.style.transform = "translateX(" + (p * 28) + "px)";
+  }
+
+  /* ---------- gulir mendatar ---------- */
+  var shell = document.querySelector(".hs-shell");
+  var track = document.getElementById("hsTrack");
+  var bar = document.getElementById("hsBar");
+
+  function hs(){
+    if (!shell || !track) return;
+    if (window.innerWidth < 1024){
+      track.style.transform = "";
+      if (bar) bar.style.transform = "scaleX(0)";
+      return;
+    }
+    var pin = shell.querySelector(".hs-pin");
+    var r = shell.getBoundingClientRect();
+    var span = shell.offsetHeight - window.innerHeight;
+    var p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+    var dist = Math.max(0, track.scrollWidth - window.innerWidth + 40);
+    track.style.transform = "translate3d(" + (-p * dist).toFixed(2) + "px,0,0)";
+    if (bar) bar.style.transform = "scaleX(" + p.toFixed(4) + ")";
+  }
+
+  /* tinggi shell supaya gulir mendatar punya ruang */
+  function setShell(){
+    if (!shell || !track) return;
+    if (window.innerWidth < 1024){
+      shell.style.height = "auto";
+      return;
+    }
+    var dist = Math.max(0, track.scrollWidth - window.innerWidth + 40);
+    shell.style.height = (window.innerHeight + dist) + "px";
+  }
+
+  /* ---------- tombol menarik magnetis ---------- */
+  if (!reduce && window.matchMedia("(hover:hover)").matches){
+    document.querySelectorAll("[data-magnetic]").forEach(function(el){
+      el.addEventListener("mousemove", function(e){
+        var r = el.getBoundingClientRect();
+        var mx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        var my = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        el.style.transform = "translate3d(" + (mx * 6).toFixed(2) + "px," + (my * 5).toFixed(2) + "px,0)";
+      });
+      el.addEventListener("mouseleave", function(){ el.style.transform = ""; });
+    });
+  }
+
+  /* ---------- akordeon ---------- */
+  document.querySelectorAll(".acc-item").forEach(function(item){
+    var btn = item.querySelector(".acc-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function(){
+      var open = item.classList.contains("open");
+      document.querySelectorAll(".acc-item.open").forEach(function(o){
+        o.classList.remove("open");
+        var b = o.querySelector(".acc-btn"); if (b) b.setAttribute("aria-expanded", "false");
+      });
+      if (!open){
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  /* ---------- menu mobile ---------- */
+  var mnav = document.getElementById("mnav");
+  var burger = document.getElementById("burger");
+  var mclose = document.getElementById("mclose");
+  function setMenu(open){
+    if (!mnav) return;
+    mnav.classList.toggle("open", open);
+    if (burger) burger.setAttribute("aria-expanded", open ? "true" : "false");
+    document.documentElement.style.overflow = open ? "hidden" : "";
+  }
+  if (burger) burger.addEventListener("click", function(){ setMenu(true); });
+  if (mclose) mclose.addEventListener("click", function(){ setMenu(false); });
+  if (mnav) mnav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ setMenu(false); });
+  });
+
+  /* ---------- sorot tautan aktif ---------- */
+  var links = document.querySelectorAll(".nav-a");
+  if ("IntersectionObserver" in window && links.length){
+    var secs = [];
+    links.forEach(function(a){
+      var s = document.getElementById(a.getAttribute("data-target"));
+      if (s) secs.push(s);
+    });
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        links.forEach(function(a){
+          a.classList.toggle("active", a.getAttribute("data-target") === en.target.id);
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    secs.forEach(function(s){ so.observe(s); });
+  }
+
+  /* ---------- tabir pembuka ---------- */
+  var mist = document.getElementById("mist");
+  var mnum = document.getElementById("mistNum");
+  if (mist && !reduce){
+    var n = 0, iv = setInterval(function(){
+      n = Math.min(100, n + Math.ceil(Math.random() * 11));
+      if (mnum) mnum.textContent = String(n).padStart(2, "0");
+      if (n >= 100) clearInterval(iv);
+    }, 42);
+    setTimeout(function(){
+      mist.classList.add("done");
+      setTimeout(function(){ mist.style.display = "none"; }, 1400);
+    }, 620);
+  } else if (mist){
+    mist.style.display = "none";
+  }
+
+  /* ---------- tombol mengambang ---------- */
+  var fly = document.getElementById("flyout");
+  if (fly){
+    setTimeout(function(){ fly.classList.add("is-in"); }, 1600);
+    window.addEventListener("scroll", function(){
+      if ((window.scrollY || 0) < 300) fly.classList.remove("is-in");
+      else fly.classList.add("is-in");
+    }, { passive: true });
+  }
+
+  /* ---------- form ---------- */
+  var form = document.getElementById("formDaftar");
+  var note = document.getElementById("formNote");
+  if (form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if (!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+      var d = new FormData(form);
+      var pesan = "Halo Mirai Gakuin, saya " + (d.get("nama") || "") +
+                  ". Saya tertarik pada program " + (d.get("program") || "yang direkomendasikan") +
+                  ". Usia " + (d.get("usia") || "-") + "." +
+                  (d.get("catatan") ? " Catatan: " + d.get("catatan") : "");
+      if (note){
+        note.textContent = "Membuka WhatsApp dengan pesan Anda. Kalau tidak terbuka, hubungi nomor di samping.";
+        note.classList.remove("hidden");
+        note.classList.add("text-vermilion");
+      }
+      window.open("https://wa.me/6281234567890?text=" + encodeURIComponent(pesan), "_blank");
+    });
+  }
+
+  /* ---------- modal ---------- */
+  var modal = document.getElementById("demoModal");
+  var closeM = document.getElementById("closeModal");
+  function showModal(){
+    if (!modal) return;
+    modal.style.display = "flex";
+  }
+  function hideModal(){ if (modal) modal.style.display = "none"; }
+  if (closeM) closeM.addEventListener("click", hideModal);
+  if (modal) modal.addEventListener("click", function(e){ if (e.target === modal) hideModal(); });
+  document.addEventListener("contextmenu", function(e){
+    if (e.target.closest("input, textarea, select")) return;
+    e.preventDefault(); showModal();
+  });
+  document.addEventListener("keydown", function(e){
+    var k = (e.key || "").toLowerCase();
+    var blok = k === "f12" ||
+      (e.ctrlKey && e.shiftKey && (k === "i" || k === "j" || k === "c")) ||
+      (e.metaKey && e.altKey && (k === "i" || k === "j" || k === "c")) ||
+      (e.ctrlKey && k === "u");
+    if (blok){ e.preventDefault(); showModal(); }
+  });
+
+  /* ---------- pemicu ulang pada ubah ukuran ---------- */
+  var tmr;
+  function refresh(){
+    clearTimeout(tmr);
+    tmr = setTimeout(function(){ setShell(); hs(); onScroll(); parallax(); }, 140);
+  }
+
+  /* ---------- tombol jeda marquee (WCAG 2.2.2) ---------- */
+  var mqBtn = document.getElementById("mqToggle");
+  if (mqBtn){
+    var mqs = document.querySelectorAll(".marquee");
+    mqBtn.addEventListener("click", function(){
+      var nowPaused = mqBtn.getAttribute("aria-pressed") === "true";
+      mqs.forEach(function(mq){ mq.setAttribute("data-paused", nowPaused ? "false" : "true"); });
+      mqBtn.setAttribute("aria-pressed", nowPaused ? "false" : "true");
+    });
+    if (reduce){
+      mqs.forEach(function(mq){ mq.setAttribute("data-paused", "true"); });
+      mqBtn.setAttribute("aria-pressed", "true");
+    }
+  }
+
+  window.addEventListener("resize", refresh);
+  window.addEventListener("load", function(){ setShell(); hs(); });
+  window.addEventListener("scroll", onScroll, { passive: true });
+  setShell(); onScroll(); hs();
+})();
+</script>
+<!-- penanda demo: project ini portofolio, bukan situs resmi klien -->
+<div style="position:fixed;left:0;right:0;bottom:0;z-index:99999;
+  background:#111827;color:#f9fafb;font:500 13px/1.45 system-ui,sans-serif;
+  padding:9px 14px;text-align:center;box-shadow:0 -2px 12px rgba(0,0,0,.25)">
+  Demo portofolio desain web &middot; bukan situs resmi lembaga &middot;
+  dibuat oleh <a href="https://portofolioadji-v3.vercel.app" target="_blank"
+  rel="noopener" style="color:#93c5fd;text-decoration:underline">Adji</a>
+</div>
+</body>
+</html>
